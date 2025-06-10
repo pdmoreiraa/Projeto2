@@ -22,11 +22,11 @@ namespace Projeto2.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CadastrarUsuario(Produto produto)
+        public IActionResult CadastrarProduto(Produto produto)
         {
             if (ModelState.IsValid)
             {
-                _produtoRepository.Cadastrar(produto);
+                _produtoRepository.AddProduto(produto);
             }
             return View();
         }

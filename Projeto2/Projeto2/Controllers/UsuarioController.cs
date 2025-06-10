@@ -19,6 +19,22 @@ namespace Projeto2.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Login(string email, string senha)
+        {
+            var usuario = _usuarioRepository.ObterUsuario(email);
+
+            if (usuario != null && usuario.Senha == senha)
+            {
+
+                return RedirectToAction("Usuario", "Usuario");
+            }
+
+            ModelState.AddModelError("", "Email ou senha inválidos.");
+
+            return View();
+        }
+
         public IActionResult Cadastro()
         {
             return View();
@@ -27,7 +43,7 @@ namespace Projeto2.Controllers
         [HttpPost]
         public IActionResult Cadastro(Usuario usuario)
         {
-            // Verifica se o ModelState é válido. O ModelState é considerado válido se não houver erros de validação.
+
             if (ModelState.IsValid)
             {
                 _usuarioRepository.AddUsuario(usuario);
@@ -38,20 +54,6 @@ namespace Projeto2.Controllers
             return View(usuario);
         }
 
-        [HttpPost]
-        public IActionResult Login(string email, string senha)
-        {
-            var usuario = _usuarioRepository.ObterUsuario(email);
-
-            if (usuario != null && usuario.Senha == senha)
-            {
-                
-                return RedirectToAction("Cliente", "Cliente");
-            }
-             
-            ModelState.AddModelError("", "Email ou senha inválidos.");
-            
-            return View();
-        }
+        
     }
 }
