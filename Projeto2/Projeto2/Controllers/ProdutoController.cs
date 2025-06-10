@@ -16,19 +16,22 @@ namespace Projeto2.Controllers
             _produtoRepository = produtoRepository;
         }
 
-        [HttpGet]
         public IActionResult CadastrarProduto()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult CadastrarProduto(Produto produto)
         {
             if (ModelState.IsValid)
             {
-                _produtoRepository.AddProduto(produto);
+                _produtoRepository.CadastrarProduto(produto);
+
+                return RedirectToAction("Index", "Home");
             }
-            return View();
+
+            return View(produto);
         }
     }
 }

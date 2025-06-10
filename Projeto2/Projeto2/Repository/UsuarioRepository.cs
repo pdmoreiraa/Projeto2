@@ -20,7 +20,7 @@ namespace Projeto2.Repository
                 // Abre a conexão com o banco de dados MySQL.
                 conexao.Open();
                 // Cria um novo comando SQL para selecionar todos os campos da tabela 'Usuario' onde o campo 'Email' corresponde ao parâmetro fornecido.
-                MySqlCommand cmd = new("SELECT * FROM Usuario WHERE Email = @email", conexao);
+                MySqlCommand cmd = new("SELECT * FROM Usuarios WHERE Email = @email", conexao);
                 // Adiciona um parâmetro ao comando SQL para o campo 'Email', especificando o tipo como VarChar e utilizando o valor do parâmetro 'email'.
                 cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
 
@@ -37,7 +37,7 @@ namespace Projeto2.Repository
                         usuario = new Usuario
                         {
                             // Lê o valor da coluna "Id" da linha atual do resultado, converte para inteiro e atribui à propriedade 'Id' do objeto 'usuario'.
-                            Id = Convert.ToInt32(dr["Id"]),
+                            Id = Convert.ToInt32(dr["IdUser"]),
                             // Lê o valor da coluna "Nome" da linha atual do resultado, converte para string e atribui à propriedade 'Nome' do objeto 'usuario'.
                             Nome = dr["Nome"].ToString(),
                             // Lê o valor da coluna "Email" da linha atual do resultado, converte para string e atribui à propriedade 'Email' do objeto 'usuario'.

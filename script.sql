@@ -13,7 +13,7 @@
 			IdProd int primary key auto_increment,
             Nome varchar(50) not null,
 			Descricao varchar(50) not null,
-			Preco double(4,2) not null,
+			Preco decimal(6,2) not null,
 			Quantidade int not null
 		);
         

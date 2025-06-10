@@ -1,5 +1,15 @@
-﻿<form asp-action="Login" method="post">
-    <input name="Email" placeholder="Email" />
-    <input name="Senha" placeholder="Senha" type="password" />
-    <button type="submit">Entrar</button>
+﻿@model Projeto2.Models.Usuario;
+
+<h1>Login</h1>
+
+<form asp-action="Login" method="post">
+    <div>
+        <label>Email:</label>
+        <input type="email" name="email" required />
+    </div>
+    <div>
+        <label>Senha:</label>
+        <input type="password" name="senha" required />
+    </div>
+    <button type="submit">Login</button>
 </form>
