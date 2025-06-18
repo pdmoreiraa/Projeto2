@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using Projeto2.Models;
 using Projeto2.Repository;
+using System.Data;
 
 namespace Projeto2.Controllers
 {
@@ -28,10 +31,20 @@ namespace Projeto2.Controllers
             {
                 _produtoRepository.CadastrarProduto(produto);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
 
             return View(produto);
         }
+
+        public IActionResult Index()
+        {
+            return View(_produtoRepository.TodosProdutos());
+        }
+
+        
+            // Cria uma nova lista para armazenar os objetos Cliente
+            
+        
     }
 }
